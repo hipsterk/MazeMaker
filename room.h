@@ -1,3 +1,4 @@
+//declaration of the Room class
 #ifndef ROOM_H
 #define ROOM_H
 

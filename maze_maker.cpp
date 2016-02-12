@@ -11,13 +11,15 @@ void openDoors(Room *room1, Room *room2, int size);
 int main(){
 	int size;
 
-	std::cout << "Input the desired side length for the maze (-1 for random): ";
+	std::cout << "Input the desired side length for the maze";
+	std::cout << " (-1 for random): ";
 	std::cin >> size; 	
 
 	while(size <= 3 && size != -1){
 		std::cin.clear();
 		std::cin.ignore();
-		std::cout << "Invalid size. Size must be a positive integer greater than 3: ";
+		std::cout << "Invalid size. Size must be a positive integer";
+		std::cout << " greater than 3: ";
 		std::cin >> size;
 	}
 	if(size == -1){
@@ -33,19 +35,20 @@ int main(){
 	}
 	
 	// nested for loops to label each room starting from 0
-//	std::cout << "\nRooms by number:\n";	
+	//std::cout << "\nRooms by number:\n";	
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 			maze[i][j].setRoomNumber((i * size) + j);
-//			std::cout << maze[i][j].getRoomNumber() << "\t"; 
+	//		std::cout << maze[i][j].getRoomNumber() << "\t"; 
 		}
-//		std::cout << "\n";
+	//	std::cout << "\n";
 	}
-/*
+	/*
 	for(int i = 0; i < size * size; i++){
-	        std::cout << "Room " << i << ":\tmaze[" << mazeRow(i, size) << "][" << mazeColumn(i, size) << "]\n";
+	        std::cout << "Room " << i << ":\tmaze[" << mazeRow(i, size);
+		std::cout << "][" << mazeColumn(i, size) << "]\n";
 	}
-*/
+	*/
 
 	std::cout << "Generating a pair of adjacent rooms: (";
 	int roomCount = size * size;
@@ -63,7 +66,8 @@ int main(){
 
 	openDoors(&maze[row1][col1], &maze[row2][col2], size);
 
-	if(maze[row1][col1].getNorth() == 1 || maze[row1][col1].getSouth() == 1){
+	if(maze[row1][col1].getNorth() == 1 || maze[row1][col1].getSouth() == 1)
+	{
 		std::cout << "\nNorth/South door opened\n";
 	}
 	if(maze[row1][col1].getEast() == 1 || maze[row1][col1].getWest() == 1){

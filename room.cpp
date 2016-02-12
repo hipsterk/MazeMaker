@@ -1,3 +1,4 @@
+//implementation of the room class
 #include "room.h"
 
 Room::Room()
