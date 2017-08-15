@@ -1,16 +1,2 @@
 # MazeMaker
-C++ Program to generate a random square maze as well as it's solution
-
-'Input the desired side length for the maze: 5
-
-+---+---+---+---+---+		+   +---+---+---+---+
-|   |   |   |   |   |		|   |       |       |
-+---+---+---+---+---+		+   +   +   +   +   +
-|   |   |   |   |   |		|   |   |   |   |   |
-+---+---+---+---+---+		+   +---+   +   +   +
-|   |   |   |   |   |	  ->	|               |   |
-+---+---+---+---+---+		+---+---+   +---+   +
-|   |   |   |   |   |		|   |           |   |
-+---+---+---+---+---+		+   +   +---+   +---+
-|   |   |   |   |   |		|           |       |
-+---+---+---+---+---+		+---+---+---+---+   +'
+C++ Program to generate a random square maze as well as its solution
