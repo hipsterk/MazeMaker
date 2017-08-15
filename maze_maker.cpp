@@ -26,18 +26,19 @@ int main(int argc, char *argv[]){
 	* like a chess board
 	*/
 	std::cout << "Current Maze:\n";
-	for(int i = 0; i <= size; i++){
+	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			if(i == 0){
-				std::cout << " _";
-			} else {
-				std::cout << "|_";
-			}
-			if(j == (size - 1) && i != 0){
-				std::cout << "|";
-			}
-		}	
-		std::cout << std::endl;
+			std::cout << "+---";	
+		}
+		std::cout << "+\n";
+		for(int j = 0; j < size; j++){
+			std::cout << "|   ";
+		}
+		std::cout << "|\n";
 	}
+	for(int i = 0; i < size; i++){
+		std::cout << "+---";
+	}
+	std::cout << "+\n";	
 	return 0;
-} 
+}
