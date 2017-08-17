@@ -1,65 +1,82 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include "room.h"
 
 int main(){
 	int size;
 
-	std::cout << "Testing room class:\n";
-	Room test;
-	test.setRoomNumber(420);
-	test.setNorth(true);
-	test.setEast(true);
-	test.setVisited(true); 
-	std::cout << "roomNumber: " << test.getRoomNumber();
-	std::cout << "\n     north: " << test.getNorth();
-	std::cout << "\n     south: " << test.getSouth();
-	std::cout << "\n      east: " << test.getEast();
-	std::cout << "\n      west: " << test.getWest();
-	std::cout << "\n   visited: " << test.getVisited();
-
-	std::cout << "\n\nInput the desired side length for the maze: ";
+	std::cout << "Input the desired side length for the maze (-1 for random): ";
 	std::cin >> size; 	
 
+	while(size <= 3 && size != -1){
+		std::cin.clear();
+		std::cin.ignore();
+		std::cout << "Invalid size. Size must be a positive integer greater than 3: ";
+		std::cin >> size;
+	}
+	if(size == -1){
+		srand(time(NULL));
+		size = rand() % 20 + 4;
+		std::cout << "Size randomly selected to be " << size << "\n";
+	} 
+
 	// create 2D array to be our maze	
-	int** maze = new int*[size];
+	Room** maze = new Room*[size];
 	for(int i = 0; i < size; i++){
-		maze[i] = new int[size];
+		maze[i] = new Room[size];
 	}
 	
 	// nested for loops to label each room starting from 0
-	std::cout << "Rooms by number:\n";	
+//	std::cout << "\nRooms by number:\n";	
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			maze[i][j] = (i * size) + j;
-			std::cout << maze[i][j] << "\t"; 
+			maze[i][j].setRoomNumber((i * size) + j);
+//			std::cout << maze[i][j].getRoomNumber() << "\t"; 
 		}
-		std::cout << "\n\n";
+//		std::cout << "\n\n";
 	}
+
+	// Open the north door of Room 0 and the South door of the last room
+	maze[0][0].setNorth(1);
+	maze[size - 1][size - 1].setSouth(1);
 	
 	/*Print out the current maze, which at this point would look
 	* like a chess board
 	*/
-	std::cout << "Current Maze:\n";
-//	std::cout << "+   ";
+	std::cout << "\nCurrent Maze:\n";
+
 	for(int i = 0; i < size; i++){
-		std::cout << "+---";
+		if(maze[0][i].getNorth() == 0){
+			std::cout << "+---";
+		} else {
+			std::cout << "+   ";
+		}
 	}
 	std::cout << "+\n";
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			std::cout << "|   ";	
+			if(maze[i][j].getWest() == 0){
+				std::cout << "|   ";	
+			} else {
+				std::cout << "    ";
+			}
 		}
 		std::cout << "|\n";
 		for(int j = 0; j < size; j++){
-//			if(i != size - 1 || j != size - 1){
+			if(maze[i][j].getSouth() == 0){
 				std::cout << "+---";
-//			} else {
-//				std::cout << "+   ";
-//			}
+			} else {
+				std::cout << "+   ";
+			}
 		}
 		std::cout << "+\n";
 	}
-
+	
+	for(int i = 0; i < size; i++){
+		delete[] maze[i];
+	}
+	delete[] maze;
 	
 	return 0;
 }
