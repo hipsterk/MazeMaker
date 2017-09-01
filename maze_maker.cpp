@@ -17,7 +17,8 @@ int main(){
 	while(size <= 3 && size != -1){
 		std::cin.clear();
 		std::cin.ignore();
-		std::cout << "Invalid size. Size must be a positive integer greater than 3: ";
+		std::cout << "Invalid size. Size must be a positive integer greater";
+		std::cout << " than 3: ";
 		std::cin >> size;
 	}
 	if(size == -1){
@@ -43,7 +44,8 @@ int main(){
 	}
 /*
 	for(int i = 0; i < size * size; i++){
-	        std::cout << "Room " << i << ":\tmaze[" << mazeRow(i, size) << "][" << mazeColumn(i, size) << "]\n";
+			std::cout << "Room " << i << ":\tmaze[" << mazeRow(i, size) << "][";
+			std::cout << mazeColumn(i, size) << "]\n";
 	}
 */
 
