@@ -17,7 +17,7 @@ DEPFLAGS = -MMD -MF $(@:.o=.d)
 
 maze_maker: $(objs)
 	@echo "CC   $@"
-	$(Q)$(CC) $(CLFAGS) -o $@ $^
+	$(Q)$(CC) $(CFLAGS) -o $@ $^
 
 %.o: %.cpp
 	@echo "CC   $@"
