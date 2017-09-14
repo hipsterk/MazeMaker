@@ -2,4 +2,4 @@
 core
 *.d
 maze_maker
-
+.vscode
